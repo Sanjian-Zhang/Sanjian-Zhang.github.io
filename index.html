@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjian Zhang | CS Researcher @ UW</title>
+  <meta name="description" content="Sanjian Zhang - MS Computer Science student at University of Washington. Research in Computer Vision, AI, and Blockchain." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Minimalist Color Palette */
+      --bg-color: #ffffff;
+      --bg-secondary: #f9fafb;
+      --text-main: #111827;
+      --text-secondary: #6b7280;
+      --accent: #4f46e5; /* A professional deep indigo/blue */
+      --border: #e5e7eb;
+      --spacing-section: 80px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: var(--text-main); transition: color 0.2s; }
+    a:hover { color: var(--accent); }
+
+    /* Container */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+    
+    nav { display: flex; gap: 24px; }
+    nav a { font-size: 0.95rem; color: var(--text-secondary); font-weight: 500; }
+    nav a:hover { color: var(--text-main); }
+
+    /* Sections */
+    section { 
+      margin-bottom: var(--spacing-section); 
+      opacity: 0; 
+      transform: translateY(20px); 
+      animation: fadeInUp 0.8s forwards; 
+    }
+
+    h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-weight: 600;
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    /* === Hero / About (Layout Modified) === */
+    .hero {
+      display: flex;
+      flex-direction: row; /* Side by side layout */
+      align-items: flex-start;
+      gap: 40px; /* Space between image and text */
+    }
+
+    /* Wrap text to keep it organized on the right */
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-top: 0; /* Align top with image */
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* Profile Image Style */
+    .profile-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%; 
+      object-fit: cover; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 4px solid var(--bg-secondary);
+      flex-shrink: 0; /* Prevent image from shrinking */
+    }
+
+    /* Lists (News/Experience) */
+    ul { list-style: none; }
+    
+    .list-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+      align-items: baseline;
+    }
+
+    .date-pill {
+      min-width: 110px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    .content { flex: 1; }
+    .content strong { color: var(--text-main); font-weight: 600; }
+    .content p { font-size: 0.95rem; color: #4b5563; margin-top: 6px; }
+    
+    /* Sub-lists */
+    .content ul { list-style: disc; padding-left: 20px; margin-top: 8px; }
+    .content ul li { margin-bottom: 4px; font-size: 0.95rem; color: #4b5563; }
+    .role { display: block; color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+
+    /* Papers */
+    .paper-item { margin-bottom: 36px; }
+    .paper-title { font-weight: 600; font-size: 1.1rem; display: block; line-height: 1.4; }
+    .paper-meta { font-size: 0.95rem; color: var(--text-secondary); margin-top: 6px; display: block; }
+    .paper-links { margin-top: 8px; }
+    .paper-links a { display: inline-block; margin-right: 16px; font-size: 0.85rem; color: var(--accent); font-weight: 500; }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .skill-category h3 { font-size: 1rem; margin-bottom: 12px; font-weight: 600; }
+    .tags span {
+      display: inline-block;
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      margin-top: 60px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 640px) {
+      .hero { 
+        flex-direction: column; /* Stack on mobile */
+        align-items: flex-start; 
+        gap: 24px;
+      }
+      .hero h1 { font-size: 2rem; }
+      .profile-avatar { width: 120px; height: 120px; }
+      
+      .list-item { flex-direction: column; gap: 4px; }
+      .date-pill { font-size: 0.85rem; color: var(--accent); margin-bottom: 4px; }
+      header { flex-direction: column; gap: 16px; align-items: flex-start; }
+      nav { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="brand">Sanjian Zhang</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about" class="hero">
+      <img src="your-photo2.jpg" alt="Sanjian Zhang" class="profile-avatar">
+      
+      <h1>Hello, I'm Sanjian. <br>Building Intelligent Systems.</h1>
+      <p>
+        I am a Master’s student in <strong>Computer Science at the University of Washington</strong>. 
+        My research focuses on Computer Vision, AI Agents, and Blockchain Technology. I am passionate about bridging the gap between theoretical research and real-world deployment.
+      </p>
+    </section>
+
+    <section id="news" style="animation-delay: 0.1s;">
+      <h2>News</h2>
+      <ul>
+        <li class="list-item">
+          <span class="date-pill">Aug 2025</span>
+          <div class="content">
+            One paper accepted at <strong>EMNLP 2025</strong>.
+          </div>
+        </li>
+        <li class="list-item">
+          <span class="date-pill">Jun 2025</span>
+          <div class="content">
+            Awarded <strong>Best Paper Award</strong> at CVPR Workshop 2025.
+          </div>
+        </li>
+        <li class="list-item">
+          <span class="date-pill">May 2025</span>
+          <div class="content">
+            Invited Reviewer for <em>ACM Transactions on the Web (TWEB)</em>.
+          </div>
+        </li>
+        <li class="list-item">
+          <span class="date-pill">Jan 2025</span>
+          <div class="content">
+            Won 5th Place in the Cell Behavior Video Classification Challenge (CBVCC), Lugano.
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="research" style="animation-delay: 0.2s;">
+      <h2>Selected Research</h2>
+      
+      <div class="paper-item">
+        <span class="paper-title">Large Language Model Agents in Finance: A Survey Bridging Research and Practice</span>
+        <span class="paper-meta"><strong>Sanjian Zhang</strong>, et al. · OpenReview 2025</span>
+        <div class="paper-links">
+          <a href="https://openreview.net/forum?id=EwZvs5mMMz" target="_blank">[OpenReview]</a>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">Securing the Skies: A Comprehensive Survey on Anti-UAV Methods</span>
+        <span class="paper-meta">Co-author · CVPR Workshop 2025 <span style="color: var(--accent); font-weight:600;">(Best Paper Award)</span></span>
+        <div class="paper-links">
+          <a href="https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Dong_Securing_the_Skies_A_Comprehensive_Survey_on_Anti-UAV_Methods_Benchmarking_CVPRW_2025_paper.html" target="_blank">[Paper]</a>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <span class="paper-title">Quantifying Communities Evolution in Blockchain Games: From the Perspective of Governance Tokens</span>
+        <span class="paper-meta"><strong>Sanjian Zhang</strong> (Lead Author) · CSCWD 2025 (Oral Presentation)</span>
+        <div class="paper-links">
+          <a href="https://ieeexplore.ieee.org/abstract/document/11033393" target="_blank">[IEEE Xplore]</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" style="animation-delay: 0.2s;">
+      <h2>Professional Experience</h2>
+      <ul>
+        <li class="list-item">
+          <span class="date-pill">Feb 2022 - Aug 2024</span>
+          <div class="content">
+            <strong>Shandong Bee Intelligent Manufacturing</strong>
+            <span class="role">Software Developer</span>
+            <ul>
+              <li>Shipped microservice dashboards and exposed ML inference as REST APIs.</li>
+              <li>Scaled data pipelines to process 2.3 million rows; optimized <strong>PostgreSQL/MySQL</strong> queries to reduce hot-query P95 latency by <strong>42%</strong> (110ms to 64ms).</li>
+              <li>Improved deployment lead time by <strong>46%</strong> (3.5 days to 1.9 days) by introducing Docker and GitHub Actions CI/CD.</li>
+              <li>Integrated multiple external data sources with idempotent loaders and retry mechanisms.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="list-item">
+          <span class="date-pill">Aug 2021 - Feb 2022</span>
+          <div class="content">
+            <strong>Tencent (Shenzhen)</strong>
+            <span class="role">Backend Developer</span>
+            <ul>
+              <li>Designed search and pagination REST APIs for a knowledge system, reducing P95 latency by <strong>41%</strong> (220ms to 130ms).</li>
+              <li>Implemented JWT authentication, RBAC, and rate limiting.</li>
+              <li>Reduced post-release defects by <strong>35%</strong> through rigorous unit and integration testing.</li>
+              <li>Instrumented structured logging to support offline evaluation of ML features.</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills" style="animation-delay: 0.4s;">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span>Python</span> <span>Java</span> <span>C/C++</span> <span>SQL</span> <span>JavaScript</span> <span>Bash</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Software & Backend</h3>
+          <div class="tags">
+            <span>FastAPI</span> <span>Docker</span> <span>Redis</span> <span>PostgreSQL</span> <span>MongoDB</span> <span>AWS</span> <span>Git/CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Machine Learning</h3>
+          <div class="tags">
+            <span>PyTorch</span> <span>VLLM</span> <span>Transformers</span> <span>Hugging Face</span> <span>CUDA</span> <span>OpenCV</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-bottom: 20px;">
+      <h2>Contact</h2>
+      <p style="color: var(--text-secondary);">
+        I am always open to discussing new research collaborations and opportunities.
+      </p>
+      <div style="margin-top: 16px;">
+        <a href="mailto:sanjian@uw.edu" style="margin-right: 20px; font-weight: 500;">sanjian@uw.edu</a>
+        <a href="https://github.com/Sanjian-Zhang" target="_blank" style="margin-right: 20px; font-weight: 500;">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=ahH0utgAAAAJ" target="_blank" style="font-weight: 500;">Google Scholar</a>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Sanjian Zhang.</div>
+      <div>Seattle, WA, USA</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
