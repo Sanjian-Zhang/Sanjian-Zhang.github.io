@@ -551,6 +551,30 @@
       gap: 14px;
     }
 
+    .news-scroll {
+      max-height: 282px;
+      overflow-y: auto;
+      padding-right: 6px;
+      scroll-behavior: smooth;
+    }
+
+    .news-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .news-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .news-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent-soft);
+      border-radius: 999px;
+    }
+
+    .news-scroll .list-item {
+      min-height: 84px;
+    }
+
     .list-item {
       display: grid;
       grid-template-columns: 126px 1fr;
@@ -855,7 +879,36 @@ Specifically, I aim to build models that take as input cardiac structures recons
         </div>
       </div>
 
-      <section id="projects" class="reveal" style="animation-delay: 0.16s;">
+      <section id="news" class="reveal" style="animation-delay: 0.16s;">
+        <div class="section-header">
+          <h2>News</h2>
+          <p class="section-subtitle">Recent updates and milestones. Scroll to view earlier items.</p>
+        </div>
+        <div class="timeline news-scroll">
+          <div class="list-item card">
+            <span class="date-pill">Apr 2026</span>
+            <div class="content">Began research as a Volunteer Research Assistant at <strong>the University of Mississippi</strong>.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">Aug 2025</span>
+            <div class="content">One paper accepted at <strong>Findings of EMNLP 2025</strong>.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">Jun 2025</span>
+            <div class="content">Awarded <strong>Best Paper Award</strong> at CVPR Workshop 2025.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">May 2025</span>
+            <div class="content">Invited Reviewer for <em>ACM Transactions on the Web (TWEB)</em>.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">Jan 2025</span>
+            <div class="content">Won 5th Place in the Cell Behavior Video Classification Challenge (CBVCC), Lugano.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal" style="animation-delay: 0.20s;">
         <div class="section-header">
           <h2>Selected Projects / Systems</h2>
           <p class="section-subtitle">Research systems that show both scientific direction and engineering depth.</p>
@@ -909,65 +962,6 @@ Specifically, I aim to build models that take as input cardiac structures recons
               </ul>
             </div>
           </article>
-        </div>
-      </section>
-
-      <section id="impact" class="reveal" style="animation-delay: 0.2s;">
-        <div class="section-header">
-          <h2>Research Impact</h2>
-          <p class="section-subtitle">A compact view of publications, awards, scalable systems, and evaluation-driven engineering.</p>
-        </div>
-
-        <div class="impact-grid">
-          <div class="impact-item card">
-            <span class="impact-number">CVPR</span>
-            <span class="impact-label">Workshop Best Paper Award in Anti-UAV systems research.</span>
-          </div>
-          <div class="impact-item card">
-            <span class="impact-number">EMNLP</span>
-            <span class="impact-label">Publication on LLM agents in finance bridging research and practice.</span>
-          </div>
-          <div class="impact-item card">
-            <span class="impact-number">34M+</span>
-            <span class="impact-label">Transactions modeled for large-scale temporal graph analysis.</span>
-          </div>
-          <div class="impact-item card">
-            <span class="impact-number">42%</span>
-            <span class="impact-label">P95 query latency reduction through database and backend optimization.</span>
-          </div>
-          <div class="impact-item card">
-            <span class="impact-number">5th</span>
-            <span class="impact-label">Overall ranking in Cell Behavior Video Classification Challenge.</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="news" class="reveal" style="animation-delay: 0.24s;">
-        <div class="section-header">
-          <h2>News</h2>
-          <p class="section-subtitle">Recent updates and milestones.</p>
-        </div>
-        <div class="timeline">
-          <div class="list-item card">
-            <span class="date-pill">Apr 2026</span>
-            <div class="content">Began research as a Volunteer Research Assistant at <strong>the University of Mississippi</strong>.</div>
-          </div>
-          <div class="list-item card">
-            <span class="date-pill">Aug 2025</span>
-            <div class="content">One paper accepted at <strong>Findings of EMNLP 2025</strong>.</div>
-          </div>
-          <div class="list-item card">
-            <span class="date-pill">Jun 2025</span>
-            <div class="content">Awarded <strong>Best Paper Award</strong> at CVPR Workshop 2025.</div>
-          </div>
-          <div class="list-item card">
-            <span class="date-pill">May 2025</span>
-            <div class="content">Invited Reviewer for <em>ACM Transactions on the Web (TWEB)</em>.</div>
-          </div>
-          <div class="list-item card">
-            <span class="date-pill">Jan 2025</span>
-            <div class="content">Won 5th Place in the Cell Behavior Video Classification Challenge (CBVCC), Lugano.</div>
-          </div>
         </div>
       </section>
 
