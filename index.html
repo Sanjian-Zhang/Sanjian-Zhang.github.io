@@ -1,373 +1,1257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sanjian Zhang | CS Researcher @ UW</title>
-  <meta name="description" content="Sanjian Zhang - MS Computer Science student at University of Washington. Research in Computer Vision, AI." />
-  
+  <title>Sanjian Zhang | Trustworthy AI & Cardiac Digital Twins</title>
+  <meta name="description" content="Sanjian Zhang is a Computer Science researcher working on trustworthy AI, biomedical AI, cardiac digital twins, privacy-preserving visual intelligence, and deployable AI systems." />
+  <meta name="keywords" content="Sanjian Zhang, Trustworthy AI, Biomedical AI, Cardiac Digital Twin, Computer Vision, Multimodal AI, Visual Privacy, Machine Learning, Digital Health, AI Research" />
+  <meta name="author" content="Sanjian Zhang" />
+  <meta property="og:title" content="Sanjian Zhang | Trustworthy AI & Cardiac Digital Twins" />
+  <meta property="og:description" content="Research in trustworthy AI systems, cardiac digital twins, biomedical AI, multimodal learning, and privacy-preserving visual intelligence." />
+  <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Minimalist Color Palette */
-      --bg-color: #ffffff;
-      --bg-secondary: #f9fafb;
-      --text-main: #111827;
-      --text-secondary: #6b7280;
-      --accent: #4f46e5; /* A professional deep indigo/blue */
-      --border: #e5e7eb;
-      --spacing-section: 80px;
+      --bg: #f7f8fc;
+      --bg-soft: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.80);
+      --text: #111827;
+      --text-muted: #5f6b7a;
+      --text-soft: #7b8494;
+      --accent: #4f46e5;
+      --accent-2: #06b6d4;
+      --heart-primary: #ef4444;
+      --heart-secondary: #f97316;
+      --grid-line: rgba(79, 70, 229, 0.12);
+      --accent-soft: rgba(79, 70, 229, 0.10);
+      --border: rgba(17, 24, 39, 0.10);
+      --shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
+      --shadow-soft: 0 10px 25px rgba(17, 24, 39, 0.06);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --container: 1120px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #070b16;
+      --bg-soft: #0d1324;
+      --bg-card: rgba(15, 23, 42, 0.80);
+      --text: #eef2ff;
+      --text-muted: #a8b3c7;
+      --text-soft: #7e8aa3;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --heart-primary: #38bdf8;
+      --heart-secondary: #a78bfa;
+      --grid-line: rgba(34, 211, 238, 0.13);
+      --accent-soft: rgba(139, 92, 246, 0.18);
+      --border: rgba(226, 232, 240, 0.12);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.25);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg-color);
-      color: var(--text-main);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 32%),
+        radial-gradient(circle at top right, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent 34%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg-soft) 42%, transparent), transparent 520px),
+        var(--bg);
+      color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
-    a { text-decoration: none; color: var(--text-main); transition: color 0.2s; }
-    a:hover { color: var(--accent); }
+    a { color: inherit; text-decoration: none; }
 
-    /* Container */
     .container {
-      max-width: 820px;
+      max-width: var(--container);
       margin: 0 auto;
-      padding: 40px 24px;
+      padding: 28px 24px 56px;
     }
 
-    /* Header */
-    header {
+    .site-header {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 60px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 18px;
+      margin-bottom: 64px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
     }
 
-    .brand { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-    
-    nav { display: flex; gap: 24px; }
-    nav a { font-size: 0.95rem; color: var(--text-secondary); font-weight: 500; }
-    nav a:hover { color: var(--text-main); }
-
-    /* Sections */
-    section { 
-      margin-bottom: var(--spacing-section); 
-      opacity: 0; 
-      transform: translateY(20px); 
-      animation: fadeInUp 0.8s forwards; 
-    }
-
-    h2 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      font-weight: 600;
-      border-left: 3px solid var(--accent);
-      padding-left: 12px;
-    }
-
-    /* === Hero / About (Layout Modified) === */
-    .hero {
+    .brand {
       display: flex;
-      flex-direction: row; /* Side by side layout */
-      align-items: flex-start;
-      gap: 40px; /* Space between image and text */
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
     }
 
-    /* Wrap text to keep it organized on the right */
-    .hero-text {
-      flex: 1;
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 32%, transparent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: var(--accent-soft);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 92px;
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 800;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .theme-toggle:hover { transform: translateY(-1px); }
+    .theme-toggle.auto-mode {
+      min-width: 116px;
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 188px 1fr;
+      gap: 42px;
+      align-items: center;
+      padding: 46px;
+      margin-bottom: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      opacity: 0.14;
+      pointer-events: none;
+    }
+
+    .profile-wrap {
+      position: relative;
+      width: 176px;
+      height: 176px;
+    }
+
+    .profile-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      opacity: 0.95;
+    }
+
+    .profile-avatar {
+      position: relative;
+      width: 176px;
+      height: 176px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid var(--bg-soft);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      margin-bottom: 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-top: 0; /* Align top with image */
+      max-width: 830px;
+      font-size: clamp(2.2rem, 5vw, 4.55rem);
+      line-height: 1.02;
+      letter-spacing: -0.075em;
+      margin-bottom: 18px;
     }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
     .hero p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      font-weight: 400;
+      max-width: 820px;
+      color: var(--text-muted);
+      font-size: 1.08rem;
     }
 
-    /* Profile Image Style */
-    .profile-avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%; 
-      object-fit: cover; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      border: 4px solid var(--bg-secondary);
-      flex-shrink: 0; /* Prevent image from shrinking */
-    }
-
-    /* Lists (News/Experience) */
-    ul { list-style: none; }
-    
-    .list-item {
+    .hero-actions {
       display: flex;
-      gap: 24px;
-      margin-bottom: 24px;
-      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.94rem;
+      font-weight: 850;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button.primary {
+      color: #fff;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 28px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+
+    .button.secondary { background: var(--bg-soft); color: var(--text); }
+
+    .research-visual {
+      display: grid;
+      grid-template-columns: 0.9fr 1.4fr;
+      gap: 18px;
+      margin: 28px 0 74px;
+    }
+
+    .heart-card {
+      position: relative;
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .heart-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: radial-gradient(circle, black 42%, transparent 73%);
+      opacity: 0.72;
+      animation: gridFloat 10s linear infinite;
+      z-index: -2;
+    }
+
+    .heart-card::after {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--heart-primary) 28%, transparent), transparent 68%);
+      animation: pulseAura 2.2s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    .heart-svg {
+      position: relative;
+      width: min(230px, 82%);
+      filter: drop-shadow(0 22px 30px color-mix(in srgb, var(--heart-primary) 24%, transparent));
+      animation: heartBeat 1.55s ease-in-out infinite;
+    }
+
+    .heart-shell {
+      fill: url(#heartGradient);
+      stroke: color-mix(in srgb, var(--heart-primary) 72%, white);
+      stroke-width: 2;
+    }
+
+    .mesh-line {
+      fill: none;
+      stroke: rgba(255,255,255,0.36);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+
+    .ecg-line {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 420;
+      stroke-dashoffset: 420;
+      animation: drawEcg 2.6s ease-in-out infinite;
+      opacity: 0.92;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 22px var(--accent-2);
+      animation: orbit 5s linear infinite;
+    }
+
+    .heart-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .focus-card {
+      padding: 26px;
+    }
+
+    .focus-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.035em;
+    }
+
+    .focus-card p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .focus-list span {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg-soft);
+      color: var(--text-muted);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    section { margin-bottom: 74px; scroll-margin-top: 110px; }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-weight: 950;
+    }
+
+    .section-subtitle {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      max-width: 560px;
+      text-align: right;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .impact-item {
+      padding: 20px;
+      min-height: 145px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .impact-item:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+    }
+
+    .impact-number {
+      display: block;
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.06em;
+      color: var(--text);
+    }
+
+    .impact-label {
+      display: block;
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      padding: 24px;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .project-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      font-size: 1.14rem;
+      line-height: 1.32;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .project-card ul {
+      margin-top: 14px;
+      padding-left: 18px;
+      color: var(--text-muted);
+      font-size: 0.91rem;
+    }
+
+    .project-card li { margin-bottom: 6px; }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 126px 1fr;
+      gap: 22px;
+      padding: 20px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .list-item:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 32%, transparent);
     }
 
     .date-pill {
-      min-width: 110px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 850;
       font-variant-numeric: tabular-nums;
-      flex-shrink: 0;
     }
 
-    .content { flex: 1; }
-    .content strong { color: var(--text-main); font-weight: 600; }
-    .content p { font-size: 0.95rem; color: #4b5563; margin-top: 6px; }
-    
-    /* Sub-lists */
-    .content ul { list-style: disc; padding-left: 20px; margin-top: 8px; }
-    .content ul li { margin-bottom: 4px; font-size: 0.95rem; color: #4b5563; }
-    .role { display: block; color: var(--accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+    .content strong { font-weight: 850; }
+    .content p, .content li { color: var(--text-muted); font-size: 0.95rem; }
+    .content ul { margin-top: 10px; padding-left: 18px; }
+    .content li { margin-bottom: 6px; }
 
-    /* Papers */
-    .paper-item { margin-bottom: 36px; }
-    .paper-title { font-weight: 600; font-size: 1.1rem; display: block; line-height: 1.4; }
-    .paper-meta { font-size: 0.95rem; color: var(--text-secondary); margin-top: 6px; display: block; }
-    .paper-links { margin-top: 8px; }
-    .paper-links a { display: inline-block; margin-right: 16px; font-size: 0.85rem; color: var(--accent); font-weight: 500; }
+    .role {
+      display: block;
+      margin: 4px 0 6px;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 850;
+    }
 
-    /* Skills Grid */
+    .paper-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .paper-item {
+      padding: 22px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .paper-item:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 36%, transparent);
+    }
+
+    .paper-title {
+      display: block;
+      font-weight: 900;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .paper-meta {
+      display: block;
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .paper-links { margin-top: 18px; }
+    .paper-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.83rem;
+      font-weight: 900;
+    }
+
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
-    }
-    .skill-category h3 { font-size: 1rem; margin-bottom: 12px; font-weight: 600; }
-    .tags span {
-      display: inline-block;
-      background: var(--bg-secondary);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      margin-right: 6px;
-      margin-bottom: 6px;
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-      margin-top: 60px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
+    .skill-category { padding: 22px; }
+    .skill-category h3 {
+      margin-bottom: 14px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags span {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text-muted);
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .fit-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .fit-block {
+      padding: 24px;
+    }
+
+    .fit-block h3 {
+      font-size: 1.08rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .fit-block p, .fit-block li {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .fit-block ul {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .contact-card {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px;
     }
 
-    /* Animation */
+    .contact-card p { color: var(--text-muted); }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Mobile Responsive */
-    @media (max-width: 640px) {
-      .hero { 
-        flex-direction: column; /* Stack on mobile */
-        align-items: flex-start; 
-        gap: 24px;
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.08); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.05); }
+      70% { transform: scale(1); }
+    }
+
+    @keyframes pulseAura {
+      0%, 100% { transform: scale(0.92); opacity: 0.55; }
+      50% { transform: scale(1.08); opacity: 0.9; }
+    }
+
+    @keyframes drawEcg {
+      0% { stroke-dashoffset: 420; opacity: 0.25; }
+      35% { stroke-dashoffset: 0; opacity: 1; }
+      70% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: -420; opacity: 0.25; }
+    }
+
+    @keyframes gridFloat {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 44px 44px, 44px 44px; }
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(142px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(142px) rotate(-360deg); }
+    }
+
+    @media (max-width: 980px) {
+      .site-header {
+        align-items: flex-start;
+        border-radius: 26px;
+        flex-direction: column;
       }
-      .hero h1 { font-size: 2rem; }
-      .profile-avatar { width: 120px; height: 120px; }
-      
-      .list-item { flex-direction: column; gap: 4px; }
-      .date-pill { font-size: 0.85rem; color: var(--accent); margin-bottom: 4px; }
-      header { flex-direction: column; gap: 16px; align-items: flex-start; }
-      nav { gap: 16px; }
+
+      nav { justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; padding: 30px; }
+      .research-visual, .fit-card { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid, .paper-grid, .skills-grid { grid-template-columns: 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+      .contact-links { justify-content: flex-start; }
+      .section-header { align-items: flex-start; flex-direction: column; }
+      .section-subtitle { text-align: left; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 18px 16px 42px; }
+      .hero { margin-bottom: 22px; }
+      .profile-wrap, .profile-avatar { width: 132px; height: 132px; }
+      .list-item { grid-template-columns: 1fr; gap: 6px; }
+      .site-header { position: relative; top: 0; }
+      .impact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <header>
-      <div class="brand">Sanjian Zhang</div>
-      <nav>
+    <header class="site-header reveal">
+      <a class="brand" href="#about" aria-label="Sanjian Zhang homepage">
+        <span class="brand-mark">SZ</span>
+        <span>Sanjian Zhang</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
         <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#research">Research</a>
-        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#impact">Impact</a>
+        <a href="#research">Publications</a>
+        <a href="#fit">Research Fit</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <span id="themeIcon">🌙</span>
+          <span id="themeText">Dark</span>
+        </button>
       </nav>
     </header>
 
-    <section id="about" class="hero">
-  <img src="me.jpg" alt="Sanjian Zhang" class="profile-avatar">
-  
-  <!-- <h1>Hello, I'm Sanjian. <br>Building Intelligent Systems.</h1> -->
-  <p>
-    I'm Sanjian, a Master’s student in <strong>Computer Science at the University of Washington</strong>.
-    My research focuses on AI safety and trustworthy multimodal AI, with an emphasis on visual privacy and de-identification, and AI-assisted evaluation.
-    I build reproducible benchmarks and human-centered sensing systems for safety-critical deployments.
-  </p>
-</section>
+    <main>
+      <section id="about" class="hero reveal" style="animation-delay: 0.08s;">
+        <div class="profile-wrap">
+          <img src="me.jpg" alt="Sanjian Zhang" class="profile-avatar">
+        </div>
 
+        <div>
+          <div class="eyebrow">Trustworthy AI × Cardiac Digital Twins × Real-world Deployment</div>
+          <h1>Building <span class="gradient-text">trustworthy AI systems</span> for cardiac digital twins and safety-critical sensing.</h1>
+          <p>
+            I am Sanjian Zhang, a Computer Science researcher focused on trustworthy AI, multimodal learning, and AI-driven spatiotemporal modeling. My current research direction centers on developing machine learning systems for cardiac dynamics prediction, where the goal is to model how the heart evolves over time across the cardiac cycle.
 
-    <section id="news" style="animation-delay: 0.1s;">
-      <h2>News</h2>
-      <ul>
-          <li class="list-item">
-          <span class="date-pill">Apr 2026</span>
-          <div class="content">
-            Began research as a Research Assistant at <strong> the University of Mississippi</strong>.
+Specifically, I aim to build models that take as input cardiac structures reconstructed from CT/MRI imaging, together with clinical variables such as blood pressure and physiological signals, and predict the temporal evolution of heart motion and state. This direction integrates temporal modeling, generative modeling, and spatiotemporal learning to enable patient-specific cardiac digital twins.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View Projects</a>
+            <a class="button secondary" href="#research">Publications</a>
+            <a class="button secondary" href="mailto:sanjian@uw.edu">Contact Me</a>
+            <a class="button secondary" href="https://scholar.google.com/citations?user=ahH0utgAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           </div>
-        </li>
-        <li class="list-item">
-          <span class="date-pill">Aug 2025</span>
-          <div class="content">
-            One paper accepted at <strong>EMNLP 2025</strong>.
-          </div>
-        </li>
-        <li class="list-item">
-          <span class="date-pill">Jun 2025</span>
-          <div class="content">
-            Awarded <strong>Best Paper Award</strong> at CVPR Workshop 2025.
-          </div>
-        </li>
-        <li class="list-item">
-          <span class="date-pill">May 2025</span>
-          <div class="content">
-            Invited Reviewer for <em>ACM Transactions on the Web (TWEB)</em>.
-          </div>
-        </li>
-        <li class="list-item">
-          <span class="date-pill">Jan 2025</span>
-          <div class="content">
-            Won 5th Place in the Cell Behavior Video Classification Challenge (CBVCC), Lugano.
-          </div>
-        </li>
-      </ul>
-    </section>
+        </div>
+      </section>
 
-    <section id="research" style="animation-delay: 0.2s;">
-      <h2>Selected Research</h2>
-      
-      <div class="paper-item">
-        <span class="paper-title">Large Language Model Agents in Finance: A Survey Bridging Research and Practice</span>
-        <span class="paper-meta"><strong>Sanjian Zhang</strong>, et al. · EMNLP</span>
-        <div class="paper-links">
-          <a href="https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.972.pdf" target="_blank">[Paper]</a>
+      <div class="research-visual reveal" style="animation-delay: 0.12s;">
+        <div class="heart-card card" aria-label="Animated cardiac AI research visual">
+          <span class="orbit-dot" aria-hidden="true"></span>
+          <svg class="heart-svg" viewBox="0 0 260 240" role="img" aria-label="Animated heart with ECG and mesh lines">
+            <defs>
+              <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--heart-primary)" />
+                <stop offset="100%" stop-color="var(--heart-secondary)" />
+              </linearGradient>
+            </defs>
+            <path class="heart-shell" d="M130 217C58 158 20 121 20 75C20 42 45 18 78 18C98 18 117 28 130 45C143 28 162 18 182 18C215 18 240 42 240 75C240 121 202 158 130 217Z" />
+            <path class="mesh-line" d="M70 62C105 84 146 84 190 62" />
+            <path class="mesh-line" d="M53 103C93 126 158 126 207 103" />
+            <path class="mesh-line" d="M75 151C105 168 152 168 184 151" />
+            <path class="mesh-line" d="M102 48C92 96 93 144 130 206" />
+            <path class="mesh-line" d="M160 48C170 96 168 144 130 206" />
+            <path class="ecg-line" d="M47 116H83L98 86L119 154L139 103L154 126H211" />
+          </svg>
+          <div class="heart-caption">Structure + signals → temporal dynamics → digital twin prediction</div>
+        </div>
+
+        <div class="focus-card card">
+          <h3>Research focus</h3>
+          <p>
+            My work is centered on a core question: how can we learn accurate temporal dynamics of the human heart from heterogeneous data sources, including imaging, clinical variables, and simulation signals? I approach this by designing spatiotemporal learning frameworks that bridge machine learning with structured representations such as meshes and graphs, enabling predictive and generative modeling of cardiac motion.
+          </p>
+          <div class="focus-list">
+            <span>Spatiotemporal modeling for cardiac motion prediction across the full cardiac cycle</span>
+            <span>Patient-specific cardiac digital twin modeling using imaging, clinical variables, and simulation data</span>
+            <span>Machine learning frameworks for reliable prediction under real-world biomedical constraints</span>
+          </div>
         </div>
       </div>
 
-      <div class="paper-item">
-        <span class="paper-title">Securing the Skies: A Comprehensive Survey on Anti-UAV Methods</span>
-        <span class="paper-meta">Co-author · CVPR Workshop 2025 <span style="color: var(--accent); font-weight:600;">(Best Paper Award)</span></span>
-        <div class="paper-links">
-          <a href="https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Dong_Securing_the_Skies_A_Comprehensive_Survey_on_Anti-UAV_Methods_Benchmarking_CVPRW_2025_paper.html" target="_blank">[Paper]</a>
+      <section id="projects" class="reveal" style="animation-delay: 0.16s;">
+        <div class="section-header">
+          <h2>Selected Projects / Systems</h2>
+          <p class="section-subtitle">Research systems that show both scientific direction and engineering depth.</p>
         </div>
-      </div>
 
-      <div class="paper-item">
-        <span class="paper-title">Quantifying Communities Evolution in Blockchain Games: From the Perspective of Governance Tokens</span>
-        <span class="paper-meta"><strong>Sanjian Zhang</strong> (Lead Author) · CSCWD 2025 (Oral Presentation)</span>
-        <div class="paper-links">
-          <a href="https://ieeexplore.ieee.org/abstract/document/11033393" target="_blank">[IEEE Xplore]</a>
+        <div class="projects-grid">
+          <article class="project-card card">
+            <div>
+              <span class="project-tag">Ongoing Direction</span>
+              <h3>Cardiac Dynamics Modeling for Digital Twins</h3>
+              <p>
+                Developing spatiotemporal models for cardiac dynamics prediction using imaging-derived
+                structures, physiological variables, and machine learning-based prediction.
+              </p>
+              <ul>
+                <li>Focus: cardiac cycle prediction, mesh representation, and displacement-based temporal modeling.</li>
+                <li>Methods: spatiotemporal transformers, graph neural networks (e.g., GraphSAGE), mesh-based modeling, and diffusion or video-based generative models.</li>
+                <li>Goal: building AI-driven surrogates for biomechanical simulation to enable efficient, interpretable, and patient-specific cardiac digital twins.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card card">
+            <div>
+              <span class="project-tag">Benchmark System</span>
+              <h3>Safety-by-Design Visual De-identification Benchmark</h3>
+              <p>
+                Built a reproducible benchmark framework for evaluating privacy-preserving visual transformation under
+                realistic adversarial and utility constraints.
+              </p>
+              <ul>
+                <li>Evaluates privacy leakage through face/plate re-identification and OCR text recovery.</li>
+                <li>Measures utility, perceptual quality, robustness, latency, and deployment trade-offs.</li>
+                <li>Designed for camera streams in smart sensing, transportation, and safety-critical environments.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card card">
+            <div>
+              <span class="project-tag">Large-scale Modeling</span>
+              <h3>Temporal Graph Modeling for Community Evolution</h3>
+              <p>
+                Constructed and analyzed large-scale dynamic transaction networks to quantify community evolution and
+                decentralization patterns in blockchain games.
+              </p>
+              <ul>
+                <li>Processed 34M+ transactions and 1.3M+ nodes into monthly temporal graphs.</li>
+                <li>Applied Leiden community detection and overlap-based tracking for merge/split/birth/death patterns.</li>
+                <li>Produced CSCWD 2025 oral paper on governance tokens and community evolution.</li>
+              </ul>
+            </div>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="experience" style="animation-delay: 0.2s;">
-      <h2>Professional Experience</h2>
-      <ul>
-        <li class="list-item">
-          <span class="date-pill">Feb 2022 - Aug 2024</span>
-          <div class="content">
-            <strong>Shandong Bee Intelligent Manufacturing</strong>
-            <span class="role">Software Developer</span>
+      <section id="impact" class="reveal" style="animation-delay: 0.2s;">
+        <div class="section-header">
+          <h2>Research Impact</h2>
+          <p class="section-subtitle">A compact view of publications, awards, scalable systems, and evaluation-driven engineering.</p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-item card">
+            <span class="impact-number">CVPR</span>
+            <span class="impact-label">Workshop Best Paper Award in Anti-UAV systems research.</span>
+          </div>
+          <div class="impact-item card">
+            <span class="impact-number">EMNLP</span>
+            <span class="impact-label">Publication on LLM agents in finance bridging research and practice.</span>
+          </div>
+          <div class="impact-item card">
+            <span class="impact-number">34M+</span>
+            <span class="impact-label">Transactions modeled for large-scale temporal graph analysis.</span>
+          </div>
+          <div class="impact-item card">
+            <span class="impact-number">42%</span>
+            <span class="impact-label">P95 query latency reduction through database and backend optimization.</span>
+          </div>
+          <div class="impact-item card">
+            <span class="impact-number">5th</span>
+            <span class="impact-label">Overall ranking in Cell Behavior Video Classification Challenge.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="reveal" style="animation-delay: 0.24s;">
+        <div class="section-header">
+          <h2>News</h2>
+          <p class="section-subtitle">Recent updates and milestones.</p>
+        </div>
+        <div class="timeline">
+          <div class="list-item card">
+            <span class="date-pill">Apr 2026</span>
+            <div class="content">Began research as a Volunteer Research Assistant at <strong>the University of Mississippi</strong>.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">Aug 2025</span>
+            <div class="content">One paper accepted at <strong>Findings of EMNLP 2025</strong>.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">Jun 2025</span>
+            <div class="content">Awarded <strong>Best Paper Award</strong> at CVPR Workshop 2025.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">May 2025</span>
+            <div class="content">Invited Reviewer for <em>ACM Transactions on the Web (TWEB)</em>.</div>
+          </div>
+          <div class="list-item card">
+            <span class="date-pill">Jan 2025</span>
+            <div class="content">Won 5th Place in the Cell Behavior Video Classification Challenge (CBVCC), Lugano.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="research" class="reveal" style="animation-delay: 0.28s;">
+        <div class="section-header">
+          <h2>Selected Publications</h2>
+          <p class="section-subtitle">Publications connecting trustworthy AI, benchmark design, multimodal systems, and large-scale analysis.</p>
+        </div>
+
+        <div class="paper-grid">
+          <article class="paper-item card">
+            <div>
+              <span class="paper-title">Large Language Model Agents in Finance: A Survey Bridging Research, Practice, and Real-World Deployment</span>
+              <span class="paper-meta"><strong>Sanjian Zhang</strong>, et al. · Findings of EMNLP 2025</span>
+            </div>
+            <div class="paper-links">
+              <a href="https://aclanthology.org/anthology-files/pdf/findings/2025.findings-emnlp.972.pdf" target="_blank" rel="noopener">Paper →</a>
+            </div>
+          </article>
+
+          <article class="paper-item card">
+            <div>
+              <span class="paper-title">Securing the Skies: A Comprehensive Survey on Anti-UAV Methods, Benchmarking, and Future Directions</span>
+              <span class="paper-meta">Co-first Author · CVPR Workshop 2025 · <strong style="color: var(--accent);">Best Paper Award</strong></span>
+            </div>
+            <div class="paper-links">
+              <a href="https://openaccess.thecvf.com/content/CVPR2025W/Anti-UAV/html/Dong_Securing_the_Skies_A_Comprehensive_Survey_on_Anti-UAV_Methods_Benchmarking_CVPRW_2025_paper.html" target="_blank" rel="noopener">Paper →</a>
+            </div>
+          </article>
+
+          <article class="paper-item card">
+            <div>
+              <span class="paper-title">Decentralization and Community Evolution in Blockchain Games: The Role of Governance Tokens</span>
+              <span class="paper-meta"><strong>Sanjian Zhang</strong> · CSCWD 2025 · Oral Presentation</span>
+            </div>
+            <div class="paper-links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/11033393" target="_blank" rel="noopener">IEEE Xplore →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="reveal" style="animation-delay: 0.32s;">
+        <div class="section-header">
+          <h2>Professional Experience</h2>
+          <p class="section-subtitle">Production engineering experience supporting deployable, reliable, and measurable AI systems.</p>
+        </div>
+        <div class="timeline">
+          <div class="list-item card">
+            <span class="date-pill">Feb 2022 – Aug 2024</span>
+            <div class="content">
+              <strong>Shandong Bee Intelligent Manufacturing</strong>
+              <span class="role">Software Developer</span>
+              <ul>
+                <li>Shipped microservice dashboards and exposed ML inference as REST APIs.</li>
+                <li>Scaled data pipelines to process 2.3 million rows; optimized PostgreSQL/MySQL queries to reduce hot-query P95 latency by 42%.</li>
+                <li>Improved deployment lead time by 46% by introducing Docker and GitHub Actions CI/CD.</li>
+                <li>Integrated multiple external data sources with idempotent loaders, retry mechanisms, and structured monitoring.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="list-item card">
+            <span class="date-pill">Aug 2021 – Feb 2022</span>
+            <div class="content">
+              <strong>Tencent (Shenzhen)</strong>
+              <span class="role">Backend Developer</span>
+              <ul>
+                <li>Designed search and pagination REST APIs for a knowledge system, reducing P95 latency by 41%.</li>
+                <li>Implemented JWT authentication, RBAC, and rate limiting for secure backend services.</li>
+                <li>Reduced post-release defects by 35% through unit and integration testing.</li>
+                <li>Instrumented structured logging to support offline evaluation of ML features.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="reveal" style="animation-delay: 0.36s;">
+        <div class="section-header">
+          <h2>Technical Skills</h2>
+          <p class="section-subtitle">Research, backend, ML, and deployment stack.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category card">
+            <h3>AI / ML</h3>
+            <div class="tags">
+              <span>PyTorch</span><span>Transformers</span><span>VLMs</span><span>CLIP</span><span>YOLOv8</span><span>OpenCV</span><span>CUDA</span>
+            </div>
+          </div>
+          <div class="skill-category card">
+            <h3>Systems</h3>
+            <div class="tags">
+              <span>FastAPI</span><span>Docker</span><span>GitHub Actions</span><span>Linux</span><span>Redis</span><span>REST APIs</span><span>CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-category card">
+            <h3>Data / Engineering</h3>
+            <div class="tags">
+              <span>Python</span><span>Java</span><span>C/C++</span><span>SQL</span><span>PostgreSQL</span><span>MongoDB</span><span>Bash</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fit" class="reveal" style="animation-delay: 0.40s;">
+        <div class="section-header">
+          <h2>Research Fit for PhD Collaboration</h2>
+          <p class="section-subtitle">Designed for faculty visitors: what I can contribute and where I want to grow.</p>
+        </div>
+        <div class="fit-card">
+          <div class="fit-block card">
+            <h3>What I bring</h3>
+            <p>
+              I bring a combination of research writing, benchmark construction, backend engineering, and reproducible
+              ML system implementation. My experience spans computer vision, multimodal AI, large-scale graph modeling,
+              evaluation pipelines, and production-oriented software systems.
+            </p>
             <ul>
-              <li>Shipped microservice dashboards and exposed ML inference as REST APIs.</li>
-              <li>Scaled data pipelines to process 2.3 million rows; optimized <strong>PostgreSQL/MySQL</strong> queries to reduce hot-query P95 latency by <strong>42%</strong> (110ms to 64ms).</li>
-              <li>Improved deployment lead time by <strong>46%</strong> (3.5 days to 1.9 days) by introducing Docker and GitHub Actions CI/CD.</li>
-              <li>Integrated multiple external data sources with idempotent loaders and retry mechanisms.</li>
+              <li>Strong focus on measurable, reproducible research artifacts.</li>
+              <li>Experience connecting research ideas with deployable software infrastructure.</li>
+              <li>Background in visual privacy, trustworthy AI, and safety-critical sensing.</li>
             </ul>
           </div>
-        </li>
-        <li class="list-item">
-          <span class="date-pill">Aug 2021 - Feb 2022</span>
-          <div class="content">
-            <strong>Tencent (Shenzhen)</strong>
-            <span class="role">Backend Developer</span>
+          <div class="fit-block card">
+            <h3>Where I am heading</h3>
+            <p>
+              My PhD direction is to develop AI-driven spatiotemporal models for cardiovascular systems, especially
+              cardiac digital twins, temporal prediction, and simulation-based evaluation. I am interested in methods
+              that combine structure, dynamics, clinical variables, and physical constraints.
+            </p>
             <ul>
-              <li>Designed search and pagination REST APIs for a knowledge system, reducing P95 latency by <strong>41%</strong> (220ms to 130ms).</li>
-              <li>Implemented JWT authentication, RBAC, and rate limiting.</li>
-              <li>Reduced post-release defects by <strong>35%</strong> through rigorous unit and integration testing.</li>
-              <li>Instrumented structured logging to support offline evaluation of ML features.</li>
+              <li>Cardiac motion and physiological time-series prediction.</li>
+              <li>Graph, mesh, and spatiotemporal representation learning.</li>
+              <li>Robust evaluation for healthcare AI and digital twin deployment.</li>
             </ul>
           </div>
-        </li>
-      </ul>
-    </section>
+        </div>
+      </section>
 
-    <section id="skills" style="animation-delay: 0.4s;">
-      <h2>Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h3>Languages</h3>
-          <div class="tags">
-            <span>Python</span> <span>Java</span> <span>C/C++</span> <span>SQL</span> <span>JavaScript</span> <span>Bash</span>
+      <section id="contact" class="reveal" style="animation-delay: 0.44s;">
+        <div class="contact-card card">
+          <div>
+            <h2 style="margin-bottom: 10px;">Contact</h2>
+            <p>Let's build trustworthy AI systems for biomedical modeling, cardiac digital twins, and real-world sensing.</p>
+          </div>
+          <div class="contact-links">
+            <a class="button primary" href="mailto:sanjian@uw.edu">Email</a>
+            <a class="button secondary" href="https://github.com/Sanjian-Zhang" target="_blank" rel="noopener">GitHub</a>
+            <a class="button secondary" href="https://scholar.google.com/citations?user=ahH0utgAAAAJ" target="_blank" rel="noopener">Scholar</a>
+            <a class="button secondary" href="https://www.linkedin.com/in/sanjian-zhang/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
-        <div class="skill-category">
-          <h3>Software & Backend</h3>
-          <div class="tags">
-            <span>FastAPI</span> <span>Docker</span> <span>Redis</span> <span>PostgreSQL</span> <span>MongoDB</span> <span>AWS</span> <span>Git/CI/CD</span>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3>Machine Learning</h3>
-          <div class="tags">
-            <span>PyTorch</span> <span>VLLM</span> <span>Transformers</span> <span>Hugging Face</span> <span>CUDA</span> <span>OpenCV</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" style="margin-bottom: 20px;">
-      <h2>Contact</h2>
-      <p style="color: var(--text-secondary);">
-        I am always open to discussing new research collaborations and opportunities.
-      </p>
-      <div style="margin-top: 16px;">
-        <a href="mailto:sanjian@uw.edu" style="margin-right: 20px; font-weight: 500;">sanjian@uw.edu</a>
-        <a href="https://github.com/Sanjian-Zhang" target="_blank" style="margin-right: 20px; font-weight: 500;">GitHub</a>
-        <a href="https://scholar.google.com/citations?user=ahH0utgAAAAJ" target="_blank" style="font-weight: 500;">Google Scholar</a>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer>
       <div>© <span id="year"></span> Sanjian Zhang.</div>
-      <div>Newark, CA, USA</div>
+      <div>Newark, CA, USA · Adaptive sunrise/sunset theme</div>
     </footer>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const text = document.getElementById('themeText');
+
+    function applyTheme(theme, modeLabel = '') {
+      root.setAttribute('data-theme', theme);
+      const isDark = theme === 'dark';
+      icon.textContent = isDark ? '☀️' : '🌙';
+      text.textContent = modeLabel || (isDark ? 'Light' : 'Dark');
+      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      toggle.classList.toggle('auto-mode', modeLabel === 'Auto');
+    }
+
+    function toRadians(degrees) {
+      return degrees * Math.PI / 180;
+    }
+
+    function toDegrees(radians) {
+      return radians * 180 / Math.PI;
+    }
+
+    function getDayOfYear(date) {
+      const start = new Date(date.getFullYear(), 0, 0);
+      const diff = date - start;
+      return Math.floor(diff / 86400000);
+    }
+
+    // NOAA-style sunrise/sunset approximation for client-side theme switching.
+    function getSunTimes(latitude, longitude, date = new Date()) {
+      const day = getDayOfYear(date);
+      const lngHour = longitude / 15;
+
+      function calculate(isSunrise) {
+        const t = day + ((isSunrise ? 6 : 18) - lngHour) / 24;
+        const meanAnomaly = (0.9856 * t) - 3.289;
+        let trueLongitude = meanAnomaly + (1.916 * Math.sin(toRadians(meanAnomaly))) + (0.020 * Math.sin(toRadians(2 * meanAnomaly))) + 282.634;
+        trueLongitude = (trueLongitude + 360) % 360;
+
+        let rightAscension = toDegrees(Math.atan(0.91764 * Math.tan(toRadians(trueLongitude))));
+        rightAscension = (rightAscension + 360) % 360;
+
+        const longitudeQuadrant = Math.floor(trueLongitude / 90) * 90;
+        const ascensionQuadrant = Math.floor(rightAscension / 90) * 90;
+        rightAscension = (rightAscension + longitudeQuadrant - ascensionQuadrant) / 15;
+
+        const sinDeclination = 0.39782 * Math.sin(toRadians(trueLongitude));
+        const cosDeclination = Math.cos(Math.asin(sinDeclination));
+        const cosHourAngle = (Math.cos(toRadians(90.833)) - (sinDeclination * Math.sin(toRadians(latitude)))) / (cosDeclination * Math.cos(toRadians(latitude)));
+
+        if (cosHourAngle > 1 || cosHourAngle < -1) return null;
+
+        let hourAngle = isSunrise ? 360 - toDegrees(Math.acos(cosHourAngle)) : toDegrees(Math.acos(cosHourAngle));
+        hourAngle = hourAngle / 15;
+
+        const localMeanTime = hourAngle + rightAscension - (0.06571 * t) - 6.622;
+        const utcHour = (localMeanTime - lngHour + 24) % 24;
+
+        const result = new Date(date);
+        result.setUTCHours(Math.floor(utcHour), Math.floor((utcHour % 1) * 60), 0, 0);
+        return result;
+      }
+
+      return {
+        sunrise: calculate(true),
+        sunset: calculate(false)
+      };
+    }
+
+    function getTimeBasedTheme() {
+      const hour = new Date().getHours();
+      return (hour >= 7 && hour < 19) ? 'light' : 'dark';
+    }
+
+    function getGeoBasedTheme(position) {
+      const { latitude, longitude } = position.coords;
+      const now = new Date();
+      const { sunrise, sunset } = getSunTimes(latitude, longitude, now);
+
+      if (!sunrise || !sunset) return getTimeBasedTheme();
+      return (now >= sunrise && now < sunset) ? 'light' : 'dark';
+    }
+
+    function applyAutoTheme() {
+      const manualTheme = localStorage.getItem('theme');
+      if (manualTheme) {
+        applyTheme(manualTheme);
+        return;
+      }
+
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          position => applyTheme(getGeoBasedTheme(position), 'Auto'),
+          () => applyTheme(getTimeBasedTheme(), 'Auto'),
+          { enableHighAccuracy: false, timeout: 3500, maximumAge: 86400000 }
+        );
+      } else {
+        applyTheme(getTimeBasedTheme(), 'Auto');
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    // Double-click the theme button to return to automatic sunrise/sunset mode.
+    toggle.addEventListener('dblclick', () => {
+      localStorage.removeItem('theme');
+      applyAutoTheme();
+    });
+
+    applyAutoTheme();
+
+    setInterval(() => {
+      if (!localStorage.getItem('theme')) applyAutoTheme();
+    }, 60000);
+
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
